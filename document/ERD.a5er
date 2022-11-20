@@ -1,0 +1,225 @@
+﻿# A5:ER FORMAT:16
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.17.4 Copyright © 1997 - 2022 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",2,"A4Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=2
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=メイリオ
+FontSize=7
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+ShowTag=1
+ShowCommonAttributes=0
+BugFixEntityWidth=1
+
+[Entity]
+PName=genres
+LName=genres
+Comment=
+TableOption=
+Page=Main
+Left=1050
+Top=100
+Field="id","id","int","NOT NULL",0,"","",$FFFFFFFF,""
+Field="name","name","varchar(10)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",1050,100
+ZOrder=-2
+
+[Entity]
+PName=contents
+LName=contents
+Comment=
+TableOption=
+Page=Main
+Left=50
+Top=250
+Field="id","id","int","NOT NULL",0,"","",$FFFFFFFF,""
+Field="name","name","varchar(150)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",50,250
+ZOrder=-1
+
+[Entity]
+PName=prefectures
+LName=prefectures
+Comment=
+TableOption=
+Page=Main
+Left=1700
+Top=400
+Field="id","id","int","NOT NULL",0,"","",$FFFFFFFF,""
+Field="name","name","varchar(4)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",1700,400
+ZOrder=-4
+
+[Entity]
+PName=musics
+LName=musics
+Comment=
+TableOption=
+Page=Main
+Left=600
+Top=100
+Field="id","id","int","NOT NULL",0,"","",$FFFFFFFF,""
+Field="name","name","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="artist","artist","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="genre_id","genre_id","int","NOT NULL",,"","",$FFFFFFFF,""
+Field="content_id","content_id","int","NOT NULL",,"","",$FFFFFFFF,""
+Field="is_favorite","is_favorite","int","NOT NULL",,"","",$FFFFFFFF,""
+Field="user_id","user_id","int","NOT NULL",,"","",$FFFFFFFF,""
+Field="lyrics_url","lyrics_url","varchar(2083)",,,"","",$FFFFFFFF,""
+Field="movie_url","movie_url","varchar(2083)",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","datetime","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","datetime","NOT NULL",,"","",$FFFFFFFF,""
+Field="is_deleted","is_deleted","int","NOT NULL",,"","",$FFFFFFFF,""
+Index=FK_musics_genres=0,genre_id
+Index=FK_musics_users=0,user_id
+Index=FK_musics_contents=0,content_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",600,100
+ZOrder=-3
+
+[Relation]
+Entity1=users
+Entity2=musics
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,637,5397,5674,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=64
+Bar2=540
+Bar3=567
+TermPos1=R
+TermPos2=R
+ZOrder=-8
+
+[Relation]
+Entity1=prefectures
+Entity2=users
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=prefecture_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,2861,5720,2545,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=286
+Bar2=572
+Bar3=254
+TermPos1=R
+TermPos2=R
+ZOrder=-9
+
+[Relation]
+Entity1=genres
+Entity2=musics
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=genre_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,6503,3037,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=650
+Bar3=304
+TermPos1=R
+TermPos2=R
+ZOrder=-7
+
+[Relation]
+Entity1=contents
+Entity2=musics
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=content_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,5451,3838,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=545
+Bar3=384
+TermPos1=R
+TermPos2=R
+ZOrder=-6
+
+[Entity]
+PName=users
+LName=users
+Comment=
+TableOption=
+Page=Main
+Left=1050
+Top=350
+Field="id","id","int","NOT NULL",0,"","",$FFFFFFFF,""
+Field="name","name","varchar(50)","NOT NULL",,"","",$FFFFFFFF,""
+Field="prefecture_id","prefecture_id","int","NOT NULL",,"","",$FFFFFFFF,""
+Field="birthday","birthday","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="password","password","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="email","email","varchar(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="tel","tel","varchar(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="memo","memo","varchar(500)",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","datetime","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","datetime","NOT NULL",,"","",$FFFFFFFF,""
+Field="is_delete","is_delete","int","NOT NULL",,"","",$FFFFFFFF,""
+Index=FK_users_prefectures=0,prefecture_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",1050,350
+ZOrder=-5
